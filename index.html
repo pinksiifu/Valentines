@@ -12,11 +12,14 @@
             background: pink;
             color: white;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
             font-size: 3rem;
             padding: 20px;
+            margin-top: 50px;
         }
         button {
             font-size: 2rem;
@@ -28,6 +31,8 @@
             background: #ff4e50;
             color: white;
             transition: 0.3s;
+            width: 70%;
+            max-width: 300px;
         }
         button:hover {
             background: #fc913a;
@@ -55,6 +60,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
         #love-message {
             font-size: 3rem;
@@ -74,6 +80,29 @@
             font-size: 2rem;
             color: red;
             animation: floatingHearts 5s linear infinite;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .quiz-question {
+                font-size: 1.2rem;
+            }
+            button {
+                font-size: 1.5rem;
+                width: 80%;
+                padding: 12px 20px;
+            }
+            #welcome-screen, #quiz-container, #valentine-question, #love-message {
+                padding: 20px;
+            }
+            #button-container {
+                gap: 15px;
+                justify-content: space-evenly;
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -104,7 +133,7 @@
     </div>
     
     <p id="valentine-question">Will you be my Valentine? 😊</p>
-    <div id="button-container" style="display: flex; justify-content: center; gap: 60px;">
+    <div id="button-container">
         <button id="yes-btn" onclick="checkAnswer(true)" style="display: none;">Yes 💕</button>
         <button id="no-btn" onclick="checkAnswer(false)" style="display: none;">No 💔</button>
     </div>
