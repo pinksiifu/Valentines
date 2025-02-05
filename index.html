@@ -9,7 +9,8 @@
         body {
             font-family: 'Rock Salt', cursive;
             text-align: center;
-            background: pink;
+            background: url('heart.jpg') no-repeat center center fixed; /* Update the path here */
+            background-size: cover;
             color: white;
             overflow: hidden;
             margin: 0;
@@ -20,7 +21,9 @@
             font-size: 3rem;
             padding: 20px;
             margin-top: 50px;
+            color: #ff4e50;
         }
+
         button {
             font-size: 2rem;
             padding: 15px 30px;
@@ -34,47 +37,58 @@
             width: 70%;
             max-width: 300px;
         }
+
         button:hover {
             background: #fc913a;
         }
+
         #welcome-screen {
             display: block;
             font-size: 2rem;
             padding: 50px;
         }
+
         #quiz-container, #valentine-question, #love-message {
             display: none;
         }
+
         @keyframes crumbleEffect {
             0% { opacity: 1; transform: scale(1); }
             100% { opacity: 0; transform: scale(0.8) rotate(10deg); }
         }
+
         .crumble {
             animation: crumbleEffect 0.8s forwards;
         }
+
         .quiz-question {
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
+
         #button-container {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
         }
+
         #love-message {
             font-size: 3rem;
             animation: fadeIn 2s forwards;
             display: none;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         @keyframes floatingHearts {
             from { transform: translateY(0); opacity: 1; }
             to { transform: translateY(-100vh); opacity: 0; }
         }
+
         .floating-heart {
             position: absolute;
             font-size: 2rem;
@@ -82,22 +96,32 @@
             animation: floatingHearts 5s linear infinite;
         }
 
+        .heart-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+        }
+
         /* Mobile optimization */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2rem;
             }
+
             .quiz-question {
                 font-size: 1.2rem;
             }
+
             button {
                 font-size: 1.5rem;
                 width: 80%;
                 padding: 12px 20px;
             }
+
             #welcome-screen, #quiz-container, #valentine-question, #love-message {
                 padding: 20px;
             }
+
             #button-container {
                 gap: 15px;
                 justify-content: space-evenly;
@@ -107,8 +131,14 @@
     </style>
 </head>
 <body>
+    <!-- Embed audio here -->
+    <audio autoplay loop>
+        <source src="https://youtu.be/U0KZNl0nJis?si=xWELAXhHc1TUpBJT.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <div id="welcome-screen">
-        <h1>Welcome, My Love! 💖</h1>
+        <h1>Welcome, Thalita! 💖</h1>
         <p>Are you ready for a special surprise?</p>
         <button onclick="startQuiz()">Begin 💕</button>
     </div>
@@ -132,7 +162,7 @@
         <p id="quiz-message"></p>
     </div>
     
-    <p id="valentine-question">Will you be my Valentine? 😊</p>
+     <p id="valentine-question">Will you be my Valentine? 😊</p>
     <div id="button-container">
         <button id="yes-btn" onclick="checkAnswer(true)" style="display: none;">Yes 💕</button>
         <button id="no-btn" onclick="checkAnswer(false)" style="display: none;">No 💔</button>
