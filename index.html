@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Rock Salt', cursive;
+            text-align: center;
+            background: pink;
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            padding: 20px;
+        }
+        button {
+            font-size: 2rem;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            margin: 30px;
+            background: #ff4e50;
+            color: white;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #fc913a;
+        }
+        #welcome-screen {
+            display: block;
+            font-size: 2rem;
+            padding: 50px;
+        }
+        #quiz-container, #valentine-question, #love-message {
+            display: none;
+        }
+        @keyframes crumbleEffect {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.8) rotate(10deg); }
+        }
+        .crumble {
+            animation: crumbleEffect 0.8s forwards;
+        }
+        .quiz-question {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        #button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        #love-message {
+            font-size: 3rem;
+            animation: fadeIn 2s forwards;
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes floatingHearts {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100vh); opacity: 0; }
+        }
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: red;
+            animation: floatingHearts 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcome-screen">
+        <h1>Welcome, My Love! 💖</h1>
+        <p>Are you ready for a special surprise?</p>
+        <button onclick="startQuiz()">Begin 💕</button>
+    </div>
+    
+    <div id="quiz-container">
+        <p class="quiz-question">1. What is our anniversary date?</p>
+        <select id="q1">
+            <option value="wrong">January 1st</option>
+            <option value="wrong">February 14th</option>
+            <option value="correct">17 August 2024</option>
+        </select>
+        
+        <p class="quiz-question">2. What is my favorite thing about you?</p>
+        <select id="q2">
+            <option value="wrong">Your jokes</option>
+            <option value="correct">Your smile</option>
+            <option value="wrong">Your cooking</option>
+        </select>
+        
+        <button onclick="checkQuiz()">Submit Answers</button>
+        <p id="quiz-message"></p>
+    </div>
+    
+    <p id="valentine-question">Will you be my Valentine? 😊</p>
+    <div id="button-container" style="display: flex; justify-content: center; gap: 60px;">
+        <button id="yes-btn" onclick="checkAnswer(true)" style="display: none;">Yes 💕</button>
+        <button id="no-btn" onclick="checkAnswer(false)" style="display: none;">No 💔</button>
+    </div>
+    <p id="love-message">I love you! ❤️💖🥰</p>
+    
+    <script>
+        function startQuiz() {
+            document.getElementById("welcome-screen").classList.add("crumble");
+            setTimeout(() => {
+                document.getElementById("welcome-screen").style.display = "none";
+                document.getElementById("quiz-container").style.display = "block";
+            }, 800);
+        }
+        
+        function checkQuiz() {
+            let answer1 = document.getElementById("q1").value;
+            let answer2 = document.getElementById("q2").value;
+            
+            if (answer1 === "correct" && answer2 === "correct") {
+                document.getElementById("quiz-container").classList.add("crumble");
+                setTimeout(() => {
+                    document.getElementById("quiz-container").style.display = "none";
+                    document.getElementById("valentine-question").style.display = "block";
+                    document.getElementById("yes-btn").style.display = "inline-block";
+                    document.getElementById("no-btn").style.display = "inline-block";
+                }, 800);
+            } else {
+                document.getElementById("quiz-message").innerText = "Oops! Try again! 😜";
+            }
+        }
+        
+        function checkAnswer(isYes) {
+            if (isYes) {
+                document.getElementById('valentine-question').classList.add('crumble');
+                document.getElementById('button-container').classList.add('crumble');
+                setTimeout(() => {
+                    document.getElementById('valentine-question').style.display = 'none';
+                    document.getElementById('button-container').style.display = 'none';
+                    document.getElementById('love-message').style.display = 'block';
+                    createHearts();
+                }, 800);
+            } else {
+                alert("Oops! Try again! 😜");
+            }
+        }
+        
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("floating-heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+                document.body.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+</html>
