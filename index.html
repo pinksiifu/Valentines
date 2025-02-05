@@ -119,13 +119,13 @@
             }
 
             #welcome-screen, #quiz-container, #valentine-question, #love-message {
-                padding: 15px;
+                padding: 25px;
             }
 
             #button-container {
                 gap: 10px;
                 justify-content: center;
-                flex-direction: column;
+                flex-direction: row;
             }
         }
     </style>
@@ -162,7 +162,7 @@
         <p id="quiz-message"></p>
     </div>
     
-     <p id="valentine-question">Now.. Will you be my Valentine? from me to you 😊</p>
+     <p id="valentine-question">Now.. Will you be my Valentine? </p>
     <div id="button-container">
         <button id="yes-btn" onclick="checkAnswer(true)" style="display: none;">Yes 💕</button>
         <button id="no-btn" onclick="checkAnswer(false)" style="display: none;">No 💔</button>
