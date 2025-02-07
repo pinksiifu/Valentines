@@ -7,6 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <style>
         body {
+            <button id="music-button" onclick="toggleMusic()">🎵 Press Me for Music</button>
+<audio id="background-music" loop>
+    <source src="Valentina.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+            
             font-family: 'Rock Salt', cursive;
             text-align: center;
             background: url(heart.jpg) no-repeat center center fixed; /* Update the path here */
@@ -147,6 +154,26 @@
     </style>
 </head>
 <body>
+    #music-button {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background: #ff4e50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+#music-button:hover {
+    background: #fc913a;
+}
+
     <!-- Embed audio here -->
     <audio autoplay loop controls>
         <source src="Valentina.mp3" type="audio/mp3">
@@ -186,6 +213,22 @@
     <p id="love-message">I love you always. 👩‍❤️‍💋‍👨</p>
     
     <script>
+    let musicPlaying = false;
+
+    function toggleMusic() {
+        let music = document.getElementById("background-music");
+        let button = document.getElementById("music-button");
+
+        if (musicPlaying) {
+            music.pause();
+            button.textContent = "🎵 Press Me for Music";
+        } else {
+            music.play();
+            button.textContent = "⏸ Music Playing (Press to Pause)";
+        }
+
+        musicPlaying = !musicPlaying;
+    
         function startQuiz() {
             document.getElementById("welcome-screen").classList.add("crumble");
             setTimeout(() => {
@@ -237,5 +280,10 @@
             }
         }
     </script>
+    <script>
+    
+    }
+</script>
+
 </body>
 </html>
