@@ -87,6 +87,22 @@
         @keyframes floatingHearts {
             from { transform: translateY(0); opacity: 1; }
             to { transform: translateY(-100vh); opacity: 0; }
+            
+         
+
+#valentine-question {
+    font-size: 7rem;
+    font-weight: bold;
+    color: white;
+    animation: glow 1.5s infinite alternate;
+    text-shadow: 2px 2px 5px red;
+}
+   @keyframes glow {
+    0% { text-shadow: 0 0 5px red, 0 0 10px pink; }
+    50% { text-shadow: 0 0 15px red, 0 0 25px pink; }
+    100% { text-shadow: 0 0 5px red, 0 0 10px pink; }
+}
+
         }
 
         .floating-heart {
